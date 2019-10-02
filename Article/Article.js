@@ -85,8 +85,66 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Tacobell is the best',
+    date: 'Mar 1st, 2021',
+    firstParagraph: `The Tacobell Cheddar Chalupa is the best taco in the world. There is nothing else that can compare. Add some Fire Sauce and you've got a meal for kings. The Tacobell Cheddar Chalupa is the best taco in the world. There is nothing else that can compare. Add some Fire Sauce and you've got a meal for kings. `,
+
+    secondParagraph: `The Tacobell Cheddar Chalupa is the best taco in the world. There is nothing else that can compare. Add some Fire Sauce and you've got a meal for kings. The Tacobell Cheddar Chalupa is the best taco in the world. There is nothing else that can compare. Add some Fire Sauce and you've got a meal for kings. `,
+
+    thirdParagraph: `The Tacobell Cheddar Chalupa is the best taco in the world. There is nothing else that can compare. Add some Fire Sauce and you've got a meal for kings. The Tacobell Cheddar Chalupa is the best taco in the world. There is nothing else that can compare. Add some Fire Sauce and you've got a meal for kings.`
   }
 ];
+const articleContain = document.querySelector(".articles");
+
+data.forEach(item => {
+  articleContain.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+})
+
+
+function createArticle(title, date, para1, para2, para3){
+  //Elements
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("p");
+  const articleFirstP = document.createElement("p");
+  const articleSecondP = document.createElement("p");
+  const articleThirdP = document.createElement("p");
+  const articleExpand = document.createElement("span");
+  // const expandBtn = document.createElement("button");
+
+  //Element Structure
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstP);
+  article.appendChild(articleSecondP);
+  article.appendChild(articleThirdP);
+  article.appendChild(articleExpand);
+  // articleExpand.appendChild(expandBtn);
+
+  //Class Names
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleExpand.classList.add('expandButton');
+
+  //Content Given
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleFirstP.textContent = para1;
+  articleSecondP.textContent = para2;
+  articleThirdP.textContent = para3;
+  articleExpand.textContent = "Expand";
+
+  //Expander
+  articleExpand.addEventListener('click', ()=>{
+    article.classList.toggle('article-open');
+  })
+
+  return article;
+
+}
+
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
