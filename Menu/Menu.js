@@ -9,7 +9,6 @@ let menuItems = [
   'Log Out'
 ];
 const menuContain = document.querySelector(".header");
-const menuBtn = document.querySelector(".menu-button");
 
 menuContain.appendChild(createMenu(menuItems));
 
