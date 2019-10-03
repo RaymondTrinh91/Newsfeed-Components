@@ -8,6 +8,37 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+const menuContain = document.querySelector(".header");
+const menuBtn = document.querySelector(".menu-button");
+
+menuContain.appendChild(createMenu(menuItems));
+
+function createMenu(array){
+  //Elements
+  const menu = document.createElement("div");
+  const list = document.createElement("ul");
+  const menuBtn = document.querySelector(".menu-button");
+
+  //Element Structure
+  menu.appendChild(list);
+
+  //Class Names
+  menu.classList.add('menu');
+
+  //Expander
+  menuBtn.addEventListener("click", ()=>{
+    menu.classList.toggle('menu--open');
+  })
+  
+  //Making the List
+  array.forEach((item) =>{
+    let li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  })
+
+  return menu;
+}
 
 /* 
 
